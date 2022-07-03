@@ -4,7 +4,7 @@ VALUES
     ("Engineering"),
     ("Finance"),
     ("Legal"),
-    ("Free Labour")
+    ("Free Labour");
 
 INSERT INTO roles (title, salary, department_id)
 VALUES
@@ -15,7 +15,7 @@ VALUES
     ("Accountant", 125000, 3),
     ("Legal Team Lead", 250000, 4),
     ("Lawyer", 190000, 4),
-    ("Bootcamp Student", 0, 5)
+    ("Bootcamp Student", 0, 5);
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES
@@ -24,6 +24,6 @@ VALUES
     ("Ashley", "Rodriguez", 2, NULL),
     ("Kevin", "Tupik", 3, 3),
     ("Kunal", "Singh", 4, NULL),
-    ("Malia", "Brown", 5, 5)
+    ("Malia", "Brown", 5, 5),
     ("Sarah", "Lourd", 6, NULL),
-    ("Tom", "Allen", 7, 7),
+    ("Tom", "Allen", 7, 7);
