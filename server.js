@@ -91,10 +91,7 @@ const viewDepartments = () => {
     const sql = `SELECT* FROM departments`
 
     db.query(sql, (err, rows) => {
-        if (err) {
-            res.status(409).json({ error: error.message});
-            return;
-        }
+        if (err) throw err;
         console.table(rows);
         initalprompt();
     });
@@ -339,10 +336,94 @@ const deleteEmployee = () => {
 };
 
 const updateRole = () => {
-    
+    const sql = `SELECT CONCAT(employees.first_name," ", employees.last_name) AS name FROM employees`
+
+    db.query(sql, (err, rows) => {
+        if (err) throw err;
+        inquirer.prompt([
+            {
+                type: "list",
+                name: "empNewRoleName",
+                message: "Which employee would you like to update?",
+                choices: rows,
+                pageSize: rows.length
+            }
+        ])
+        .then((answers)=> {
+            newRolefName = answers.empNewRoleName.split(" ")[0]
+            newRolelName = answers.empNewRoleName.split(" ")[1]
+            const sql = `SELECT CONCAT(roles.id," ", roles.title) AS name FROM roles`
+            
+            db.query(sql, (err, rows) => {
+                if (err) throw err;
+                
+                inquirer.prompt([
+                    {
+                        type: "list",
+                        name: "empNewRole",
+                        message: "What is their new role?",
+                        choices: rows,
+                        pageSize: rows.length
+                    }
+                ]).then((answers) =>{
+                    const newEmpRoleId = answers.empNewRole.split(" ")[0]
+                    const sql = `UPDATE employees SET role_id =?
+                                WHERE first_name = "${newRolefName}" 
+                                AND last_name = "${newRolelName}"`
+                    const params = [newEmpRoleId];
+                    db.query(sql, params, (err, rows) =>{
+                        if (err) throw err;
+                        initalprompt();
+                    })
+                }) 
+            });
+        })
+    });
 };
 const updateManager = () => {
-    
+    const sql = `SELECT CONCAT(employees.first_name," ", employees.last_name) AS name FROM employees`
+
+    db.query(sql, (err, rows) => {
+        if (err) throw err;
+        inquirer.prompt([
+            {
+                type: "list",
+                name: "empNewManagName",
+                message: "Which employee would you like to update?",
+                choices: rows,
+                pageSize: rows.length
+            }
+        ])
+        .then((answers)=> {
+            newManagfName = answers.empNewManagName.split(" ")[0]
+            newManaglName = answers.empNewManagName.split(" ")[1]
+            const sql = `SELECT CONCAT(employees.id," ", employees.first_name," ", employees.last_name) AS name FROM employees`
+            
+            db.query(sql, (err, rows) => {
+                if (err) throw err;
+                
+                inquirer.prompt([
+                    {
+                        type: "list",
+                        name: "empNewManager",
+                        message: "Who is their new Manager?",
+                        choices: rows,
+                        pageSize: rows.length
+                    }
+                ]).then((answers) =>{
+                    const empNewManagerId = answers.empNewManager.split(" ")[0]
+                    const sql = `UPDATE employees SET manager_id =?
+                                WHERE first_name = "${newManagfName}" 
+                                AND last_name = "${newManaglName}"`
+                    const params = [empNewManagerId];
+                    db.query(sql, params, (err, rows) =>{
+                        if (err) throw err;
+                        initalprompt();
+                    })
+                }) 
+            });
+        })
+    });
 };
 
 
