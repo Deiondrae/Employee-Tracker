@@ -27,7 +27,7 @@
   This application is involved by running the following command
 
   ```bash
-  npm i
+  npm start
   ```
   This will connect to the company database and then offer a list of various prompts. You are able to view all departments, add a department, delete a department, view all roles, add a role, delete a role, view all employees, add an employee, delete an employee, and update an employees role or manager
 
