@@ -30,6 +30,13 @@
   npm start
   ```
   This will connect to the company database and then offer a list of various prompts. You are able to view all departments, add a department, delete a department, view all roles, add a role, delete a role, view all employees, add an employee, delete an employee, and update an employees role or manager
+  
+  Image of the application.
+  
+![image](https://user-images.githubusercontent.com/99364958/180302426-89af3611-ace3-401a-ad93-786f06993af1.png)
+
+walkthrough video of the application 
+https://drive.google.com/file/d/1ivsz4Qz2pv_UdXw3gGLOKEpjKr3PS2VR/view
 
   ## License
   https://opensource.org/licenses/MIT
