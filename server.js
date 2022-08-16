@@ -37,53 +37,43 @@ const initalprompt = () => {
         },
       ])
       .then((answers) => {
-  
-        if (answers.action === "View all Departments") {
-            viewDepartments();
-        }
-  
-        if (answers.action === "Add a Department") {
-            addDepartment();
-        }
-  
-        if (answers.action === "Delete a Department") {
-            deleteDepartment();
-        }
-  
-        if (answers.action === "View all Roles") {
-            viewRoles();
-        }
-  
-        if (answers.action === "Add a Role") {
-            addRole();
-        }
-  
-        if (answers.action === "Delete a Role") {
-            deleteRole();
-        }
-  
-        if (answers.action === "View all Employees") {
-            viewEmployees();
-        }
-  
-        if (answers.action === "Add an Employee") {
-            addEmployees();
-        }
-  
-        if (answers.action === "Delete an Employee") {
-            deleteEmployee();
-        }
-  
-        if (answers.action === "Update an Employee's Role") {
-            updateRole();
-        }
-  
-        if (answers.action === "Update Employee Managers") {
-            updateManager();
-        }
-  
-        if (answers.action === "Exit Employee Tracker") {
-            db.end();
+        switch(answers.action) {
+            case "View all Departments":
+                viewDepartments();
+                break;
+            case "Add a Department":
+                addDepartment();
+                break;
+            case "Delete a Department":
+                deleteDepartment();
+                break;
+            case "View all Roles":
+                viewRoles();
+                break;
+            case "Add a Role":
+                addRole();
+                break;
+            case "Delete a Role":
+                deleteRole();
+                break;
+            case "View all Employees":
+                viewEmployees();
+                break;
+            case "Add an Employee":
+                addEmployees();
+                break;
+            case "Delete an Employee":
+                deleteEmployee();
+                break;
+            case "Update an Employee's Role":
+                updateRole();
+                break;
+            case "Update Employee Managers":
+                updateManager();
+                break;
+            case "Exit Employee Tracker":
+                console.log("Exiting employee tracker");
+                db.end();
         }
       });
 };
